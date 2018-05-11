@@ -12,7 +12,6 @@ public class CustomDate {
     private WorkingDay workingDay;
     private Hour hour;
     private Minute minute;
-    private int days;
 
     public CustomDate(int year, int month, int day, WorkingDay workingDay,  int hour, int minute) {
         this.year = new Year(year);
@@ -32,17 +31,6 @@ public class CustomDate {
         this.minute = minute;
     }
 
-/*    public static void main(String[] args) {
-        //CustomDate customDate = new CustomDate(2018, 4, 11, 12, 51);
-       // System.out.println(customDate);
-        //HourConverter hourConverter = new HourConverter();
-        //hourConverter.convert(650);
-        System.out.println(WorkingDay.FRIDAY.next(3));
-        System.out.println(Month.APRIL.next(13));
-        Hour hour = new Hour(9);
-        System.out.println(hour.next(40));
-    }*/
-
     public Year getYear() {
         return year;
     }
@@ -61,10 +49,6 @@ public class CustomDate {
 
     public Minute getMinute() {
         return minute;
-    }
-
-    public int getDays() {
-        return days;
     }
 
     public WorkingDay getWorkingDay() {

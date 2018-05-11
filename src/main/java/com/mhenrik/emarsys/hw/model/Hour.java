@@ -25,7 +25,9 @@ public final class Hour {
     }
 
     public Hour next(int hour){
-        return new Hour(WORKING_HOURS.get(WORKING_HOURS.indexOf(this.hour) + hour % (WORKING_HOURS.size() -1)));
+        int index = WORKING_HOURS.indexOf(this.hour);
+        int newIndex = (index + hour) % (WORKING_HOURS.size() - 1);
+        return new Hour(WORKING_HOURS.get(newIndex));
     }
 
 
