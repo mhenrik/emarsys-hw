@@ -76,6 +76,7 @@ public class CustomDate {
         return "year=" + year +
                 ", month=" + month +
                 ", day=" + day +
+                ", workday=" + workingDay +
                 ", hour=" + hour +
                 ", minute=" + minute +
                 '}';

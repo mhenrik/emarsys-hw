@@ -22,29 +22,43 @@ public class DueDateCalculator {
     public CustomDate convertHours(){
         this.hourConverter.convert(this.turnaroundTime);
         int hours = hourConverter.getHours();
-        int days = hourConverter.getDays();
-        int weeks = hourConverter.getWeeks();
+        int days = hourConverter.getWorkDays();
+        int calendarDays = hourConverter.getCalendarDays();
 
         Year year = this.startDate.getYear();
         Month month = this.startDate.getMonth();
-        int day = this.startDate.getDay();
-        WorkingDay workingDay = this.startDate.getWorkingDay();
+        int day = this.startDate.getDay() + calendarDays;
+        WorkingDay workingDay = this.startDate.getWorkingDay().next(days);
         Hour hour = this.startDate.getHour().next(hours);
         Minute minute = this.startDate.getMinute();
 
+        int daysInCurrentMonth = startDate.getMonth().getDaysInMonth();
+        int remainingDaysInCurrentMonth = daysInCurrentMonth - this.startDate.getDay();
+        System.out.println(remainingDaysInCurrentMonth);
+        System.out.println(day);
+
+        while (day > remainingDaysInCurrentMonth){
+            month = month.next(1);
+            day -= remainingDaysInCurrentMonth;
+            remainingDaysInCurrentMonth = month.getDaysInMonth();
+        }
+
+
         CustomDate customDate = new CustomDate(year, month, day, workingDay, hour, minute);
-        int daysInCurrentMonth = customDate.getMonth().getDaysInMonth();
         return customDate;
 
     }
 
     public static void main(String[] args) {
 
-        CustomDate startDate = new CustomDate(2018, 5, 11, WorkingDay.MONDAY, 12, 0);
+        CustomDate startDate = new CustomDate(2018, 5, 11, WorkingDay.MONDAY, 12, 30);
         System.out.println(startDate);
+
         DueDateCalculator dueDateCalculator = new DueDateCalculator();
         dueDateCalculator.setStartDate(startDate);
-        dueDateCalculator.setTurnaroundTime(2);
+
+        dueDateCalculator.setTurnaroundTime(330);
+
         System.out.println(dueDateCalculator.convertHours());
     }
 }
