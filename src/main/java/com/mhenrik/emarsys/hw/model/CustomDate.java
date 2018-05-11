@@ -1,26 +1,32 @@
 package com.mhenrik.emarsys.hw.model;
 
+import com.mhenrik.emarsys.hw.model.service.HourConverter;
+
 import java.util.Arrays;
 
 public class CustomDate {
 
-    private int year;
+    private Year year;
     private Month month;
     private int day;
     //private WorkingDay workingDay;
-    private int hours;
+    private Hour hour;
+    private Minute minute;
     private int days;
 
-    public CustomDate(int year, Month month, int day, int hours) {
-        this.year = year;
-        this.month = month;
+    public CustomDate(int year, int month, int day, int hour, int minute) {
+        this.year = new Year(year);
+        this.month = Month.values()[month+1];
         this.day = day;
-        this.hours = hours;
+        this.hour = new Hour(hour);
+        this.minute = new Minute(minute);
     }
 
     public static void main(String[] args) {
-        CustomDate customDate = new CustomDate(2018, Month.APRIL, 11, 1251);
+        CustomDate customDate = new CustomDate(2018, 4, 11, 12, 51);
         System.out.println(customDate);
+        HourConverter hourConverter = new HourConverter();
+        hourConverter.convert(650);
     }
 
     @Override
@@ -29,7 +35,8 @@ public class CustomDate {
                 "year=" + year +
                 ", month=" + month +
                 ", day=" + day +
-                ", hours=" + hours +
+                ", hour=" + hour +
+                ", minute=" + minute +
                 '}';
     }
 }

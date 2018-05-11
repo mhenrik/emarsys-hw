@@ -23,7 +23,15 @@ public enum Month {
         this.daysInMonth = daysInMonth;
     }
 
+    public Month getMonth(int monthCode){
+        return Month.values()[monthCode+1];
+    }
+
     public int getDaysInMonth(){
         return daysInMonth;
+    }
+
+    public int getMonthCode() {
+        return monthCode;
     }
 }
