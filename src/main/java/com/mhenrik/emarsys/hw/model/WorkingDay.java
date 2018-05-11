@@ -8,10 +8,10 @@ public enum WorkingDay {
     THURSDAY,
     FRIDAY;
 
-    private static WorkingDay[] vals = values();
+    private static WorkingDay[] values = values();
 
-    public WorkingDay next() {
-        return vals[(this.ordinal()+1) % vals.length];
+    public WorkingDay next(int number) {
+        return values[(this.ordinal()+number) % values.length];
     }
 
 }

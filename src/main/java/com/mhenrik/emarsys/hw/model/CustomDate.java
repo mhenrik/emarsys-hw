@@ -25,8 +25,12 @@ public class CustomDate {
     public static void main(String[] args) {
         CustomDate customDate = new CustomDate(2018, 4, 11, 12, 51);
         System.out.println(customDate);
-        HourConverter hourConverter = new HourConverter();
-        hourConverter.convert(650);
+        //HourConverter hourConverter = new HourConverter();
+        //hourConverter.convert(650);
+        System.out.println(WorkingDay.FRIDAY.next(3));
+        System.out.println(Month.APRIL.next(13));
+        Hour hour = new Hour(9);
+        System.out.println(hour.next(9));
     }
 
     @Override

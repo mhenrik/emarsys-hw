@@ -17,10 +17,15 @@ public enum Month {
 
     private final int monthCode;
     private final int daysInMonth;
+    private static Month[] values = values();
 
     private Month(int monthCode, int daysInMonth) {
         this.monthCode = monthCode;
         this.daysInMonth = daysInMonth;
+    }
+
+    public Month next(int number){
+        return values[(this.ordinal() + number) % values.length];
     }
 
     public Month getMonth(int monthCode){

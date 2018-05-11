@@ -2,11 +2,12 @@ package com.mhenrik.emarsys.hw.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public final class Hour {
 
     private int hour;
-    static final List<Integer> WORKING_HOURS = Arrays.asList(
+    public static final List<Integer> WORKING_HOURS = Arrays.asList(
             9,
             10,
             11,
@@ -18,9 +19,16 @@ public final class Hour {
             17
     );
 
+
     public Hour(int hour) {
         this.hour = checkHour(hour);
     }
+
+    public int next(int hour){
+        return WORKING_HOURS.get(WORKING_HOURS.indexOf(this.hour) + hour % (WORKING_HOURS.size() -1));
+    }
+
+
 
     private int checkHour(int hour) throws IllegalArgumentException{
         if (WORKING_HOURS.contains(hour)){
