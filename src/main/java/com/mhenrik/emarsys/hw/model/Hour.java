@@ -24,10 +24,9 @@ public final class Hour {
         this.hour = checkHour(hour);
     }
 
-    public int next(int hour){
-        return WORKING_HOURS.get(WORKING_HOURS.indexOf(this.hour) + hour % (WORKING_HOURS.size() -1));
+    public Hour next(int hour){
+        return new Hour(WORKING_HOURS.get(WORKING_HOURS.indexOf(this.hour) + hour % (WORKING_HOURS.size() -1)));
     }
-
 
 
     private int checkHour(int hour) throws IllegalArgumentException{

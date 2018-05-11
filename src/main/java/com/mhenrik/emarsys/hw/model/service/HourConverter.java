@@ -19,7 +19,7 @@ public class HourConverter {
         this.days = remainingDays;
         this.weeks = weeks;
 
-        System.out.printf("Hours are %d and weeks are %d and remaining days are %d", remainingHours, weeks, remainingDays);
+        //System.out.printf("Hours are %d and weeks are %d and remaining days are %d", remainingHours, weeks, remainingDays);
     }
 
     public int getHours() {
