@@ -17,9 +17,6 @@ public class HourConverter {
         this.nrOfworkDays = remainingDays;
         this.nrOfcalendarDays = calendarDays;
         this.nrOfWeeks = weeks;
-
-        System.out.printf("Hours are %d and calendardays are %d and remaining workDays are %d \n", remainingHours, calendarDays, remainingDays);
-        System.out.printf("Weeks are %d \n", this.nrOfWeeks);
     }
 
     public int getNrOfWeeks() {
