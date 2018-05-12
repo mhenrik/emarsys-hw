@@ -1,9 +1,5 @@
 package com.mhenrik.emarsys.hw.model;
 
-import com.mhenrik.emarsys.hw.model.service.HourConverter;
-
-import java.util.Arrays;
-
 public class CustomDate {
 
     private Year year;

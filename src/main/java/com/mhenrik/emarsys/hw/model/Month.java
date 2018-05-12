@@ -19,7 +19,7 @@ public enum Month {
     private final int daysInMonth;
     private static Month[] values = values();
 
-    private Month(int monthCode, int daysInMonth) {
+    Month(int monthCode, int daysInMonth) {
         this.monthCode = monthCode;
         this.daysInMonth = daysInMonth;
     }

@@ -2,7 +2,7 @@ package com.mhenrik.emarsys.hw.model;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Objects;
 
 public final class Hour {
 
@@ -37,6 +37,20 @@ public final class Hour {
         } else {
             throw new IllegalArgumentException("Invalid working hour!");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hour hour1 = (Hour) o;
+        return hour == hour1.hour;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(hour);
     }
 
     @Override
