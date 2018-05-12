@@ -55,8 +55,6 @@ public final class Hour {
 
     @Override
     public String toString() {
-        return "Hour{" +
-                "hour=" + hour +
-                '}';
+        return "" + hour;
     }
 }

@@ -19,7 +19,7 @@ public class DueDateCalculator {
         this.turnaroundTime = turnaroundTime;
     }
 
-    public CustomDate convertHours(){
+    public CustomDate calculateDueDate(){
         this.hourConverter.convert(this.turnaroundTime);
         int hours = hourConverter.getNrOfhours();
         int days = hourConverter.getNrOfworkDays();
@@ -47,24 +47,22 @@ public class DueDateCalculator {
             month = month.next(1);
             day -= remainingDaysInCurrentMonth;
             remainingDaysInCurrentMonth = month.getDaysInMonth();
-
         }
 
-        CustomDate customDate = new CustomDate(year, month, day, workingDay, hour, minute);
-        return customDate;
+        return new CustomDate(year, month, day, workingDay, hour, minute);
 
     }
 
     public static void main(String[] args) {
 
         CustomDate startDate = new CustomDate(2020, 12, 7, WorkingDay.MONDAY, 12, 30);
-        System.out.println(startDate);
+        System.out.println("The start date is: " + startDate);
 
         DueDateCalculator dueDateCalculator = new DueDateCalculator();
         dueDateCalculator.setStartDate(startDate);
 
-        dueDateCalculator.setTurnaroundTime(356);
+        dueDateCalculator.setTurnaroundTime(357);
 
-        System.out.println(dueDateCalculator.convertHours());
+        System.out.println("The due date is: " + dueDateCalculator.calculateDueDate());
     }
 }

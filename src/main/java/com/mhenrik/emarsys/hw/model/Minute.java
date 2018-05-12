@@ -20,9 +20,7 @@ public final class Minute {
 
     @Override
     public String toString() {
-        return "Minute{" +
-                "minute=" + minute +
-                '}';
+        return "" + minute;
     }
 
     @Override

@@ -64,8 +64,6 @@ public final class Year {
 
     @Override
     public String toString() {
-        return "Year{" +
-                "year=" + year +
-                '}';
+        return "" + year;
     }
 }
