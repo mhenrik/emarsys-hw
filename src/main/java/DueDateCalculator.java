@@ -1,6 +1,8 @@
 import com.mhenrik.emarsys.hw.model.*;
 import com.mhenrik.emarsys.hw.service.HourConverter;
 
+import java.util.Objects;
+
 public class DueDateCalculator {
 
     private HourConverter hourConverter;
@@ -52,6 +54,22 @@ public class DueDateCalculator {
 
         return new CustomDate(year, month, endDay, workingDay, hour, minute);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DueDateCalculator that = (DueDateCalculator) o;
+        return turnaroundTime == that.turnaroundTime &&
+                Objects.equals(hourConverter, that.hourConverter) &&
+                Objects.equals(startDate, that.startDate);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(hourConverter, startDate, turnaroundTime);
     }
 
     public static void main(String[] args) {

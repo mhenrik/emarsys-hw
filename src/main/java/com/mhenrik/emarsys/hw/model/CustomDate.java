@@ -1,5 +1,7 @@
 package com.mhenrik.emarsys.hw.model;
 
+import java.util.Objects;
+
 public class CustomDate {
 
     private Year year;
@@ -60,5 +62,24 @@ public class CustomDate {
                 ", hour=" + hour +
                 ", minute=" + minute +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomDate that = (CustomDate) o;
+        return day == that.day &&
+                Objects.equals(year, that.year) &&
+                month == that.month &&
+                workingDay == that.workingDay &&
+                Objects.equals(hour, that.hour) &&
+                Objects.equals(minute, that.minute);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(year, month, day, workingDay, hour, minute);
     }
 }
