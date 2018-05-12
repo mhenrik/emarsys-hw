@@ -1,5 +1,7 @@
 package com.mhenrik.emarsys.hw.model;
 
+import java.util.Objects;
+
 public final class Year {
 
     private boolean isLeapYear;
@@ -17,7 +19,7 @@ public final class Year {
             }
             return year;
         } else {
-            throw new IllegalArgumentException("Invalid year format!");
+            throw new IllegalArgumentException("Year can not be negative!");
         }
     }
 
@@ -43,6 +45,21 @@ public final class Year {
 
     public boolean isLeapYear() {
         return isLeapYear;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Year year1 = (Year) o;
+        return isLeapYear == year1.isLeapYear &&
+                year == year1.year;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(isLeapYear, year);
     }
 
     @Override
