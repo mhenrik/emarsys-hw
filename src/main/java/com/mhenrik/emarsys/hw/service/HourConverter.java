@@ -1,4 +1,4 @@
-package com.mhenrik.emarsys.hw.model.service;
+package com.mhenrik.emarsys.hw.service;
 
 public class HourConverter {
 

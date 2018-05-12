@@ -1,5 +1,5 @@
 import com.mhenrik.emarsys.hw.model.*;
-import com.mhenrik.emarsys.hw.model.service.HourConverter;
+import com.mhenrik.emarsys.hw.service.HourConverter;
 
 public class DueDateCalculator {
 

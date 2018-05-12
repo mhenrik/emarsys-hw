@@ -1,5 +1,6 @@
 package com.mhenrik.emarsys.hw.model;
 
+import com.mhenrik.emarsys.hw.model.Minute;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

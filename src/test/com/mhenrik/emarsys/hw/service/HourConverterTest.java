@@ -1,4 +1,4 @@
-package com.mhenrik.emarsys.hw.model.service;
+package com.mhenrik.emarsys.hw.service;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

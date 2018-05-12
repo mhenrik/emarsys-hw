@@ -1,5 +1,7 @@
 package com.mhenrik.emarsys.hw.model;
 
+
+import com.mhenrik.emarsys.hw.model.Hour;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
