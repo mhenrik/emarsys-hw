@@ -37,19 +37,19 @@ public class DueDateCalculator {
         Minute minute = this.startDate.getMinute();
 
         int daysInCurrentMonth = startDate.getMonth().getDaysInMonth();
-        int remainingDaysInCurrentMonth = daysInCurrentMonth - this.startDate.getDay();
         endDay += weeks*2;
 
-        while (endDay > remainingDaysInCurrentMonth){
-            if (year.isLeapYear()) {
-                endDay++;
-            }
+        while (endDay > daysInCurrentMonth){
             if (month == Month.DECEMBER){
                 year.setYear(year.getYear() + 1);
             }
             month = month.next(1);
-            endDay -= remainingDaysInCurrentMonth;
-            remainingDaysInCurrentMonth = month.getDaysInMonth();
+            endDay = endDay - daysInCurrentMonth;
+            if (year.isLeapYear() && month == Month.FEBRUARY){
+                daysInCurrentMonth = month.getDaysInMonth() + 1;
+            } else {
+                daysInCurrentMonth = month.getDaysInMonth();
+            }
         }
 
         return new CustomDate(year, month, endDay, workingDay, hour, minute);
@@ -76,14 +76,16 @@ public class DueDateCalculator {
 
         HourConverter hourConverter = new HourConverter();
 
-        CustomDate startDate = new CustomDate(2020, 12, 7, WorkingDay.MONDAY, 12, 30);
+        CustomDate startDate = new CustomDate(2018, 5, 14, WorkingDay.MONDAY, 12, 30);
         System.out.println("The start date is: " + startDate);
 
         DueDateCalculator dueDateCalculator = new DueDateCalculator(hourConverter);
         dueDateCalculator.setStartDate(startDate);
 
-        dueDateCalculator.setTurnaroundTime(357);
+        dueDateCalculator.setTurnaroundTime(49);
 
         System.out.println("The due date is: " + dueDateCalculator.calculateDueDate());
+
+
     }
 }
