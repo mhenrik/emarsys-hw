@@ -1,5 +1,7 @@
 package com.mhenrik.emarsys.hw.model;
 
+import java.util.Objects;
+
 public final class Minute {
 
     int minute;
@@ -21,5 +23,19 @@ public final class Minute {
         return "Minute{" +
                 "minute=" + minute +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Minute minute1 = (Minute) o;
+        return minute == minute1.minute;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(minute);
     }
 }
