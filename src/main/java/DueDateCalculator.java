@@ -7,8 +7,8 @@ public class DueDateCalculator {
     private CustomDate startDate;
     private int turnaroundTime;
 
-    public DueDateCalculator(){
-        this.hourConverter = new HourConverter();
+    public DueDateCalculator(HourConverter hourConverter){
+        this.hourConverter = hourConverter;
     }
 
     public void setStartDate(CustomDate startDate) {
@@ -20,6 +20,7 @@ public class DueDateCalculator {
     }
 
     public CustomDate calculateDueDate(){
+
         this.hourConverter.convert(this.turnaroundTime);
         int hours = hourConverter.getNrOfhours();
         int days = hourConverter.getNrOfworkDays();
@@ -28,37 +29,39 @@ public class DueDateCalculator {
 
         Year year = this.startDate.getYear();
         Month month = this.startDate.getMonth();
-        int day = this.startDate.getDay() + calendarDays;
+        int endDay = this.startDate.getDay() + calendarDays;
         WorkingDay workingDay = this.startDate.getWorkingDay().next(days);
         Hour hour = this.startDate.getHour().next(hours);
         Minute minute = this.startDate.getMinute();
 
         int daysInCurrentMonth = startDate.getMonth().getDaysInMonth();
         int remainingDaysInCurrentMonth = daysInCurrentMonth - this.startDate.getDay();
-        day += weeks*2;
+        endDay += weeks*2;
 
-        while (day > remainingDaysInCurrentMonth){
+        while (endDay > remainingDaysInCurrentMonth){
             if (year.isLeapYear()) {
-                day++;
+                endDay++;
             }
             if (month == Month.DECEMBER){
                 year.setYear(year.getYear() + 1);
             }
             month = month.next(1);
-            day -= remainingDaysInCurrentMonth;
+            endDay -= remainingDaysInCurrentMonth;
             remainingDaysInCurrentMonth = month.getDaysInMonth();
         }
 
-        return new CustomDate(year, month, day, workingDay, hour, minute);
+        return new CustomDate(year, month, endDay, workingDay, hour, minute);
 
     }
 
     public static void main(String[] args) {
 
+        HourConverter hourConverter = new HourConverter();
+
         CustomDate startDate = new CustomDate(2020, 12, 7, WorkingDay.MONDAY, 12, 30);
         System.out.println("The start date is: " + startDate);
 
-        DueDateCalculator dueDateCalculator = new DueDateCalculator();
+        DueDateCalculator dueDateCalculator = new DueDateCalculator(hourConverter);
         dueDateCalculator.setStartDate(startDate);
 
         dueDateCalculator.setTurnaroundTime(357);
