@@ -29,7 +29,7 @@ public enum Month {
     }
 
     public Month getMonth(int monthCode){
-        return Month.values()[monthCode+1];
+        return Month.values()[monthCode-1];
     }
 
     public int getDaysInMonth(){
