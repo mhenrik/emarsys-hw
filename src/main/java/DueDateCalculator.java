@@ -35,14 +35,19 @@ public class DueDateCalculator {
 
         int daysInCurrentMonth = startDate.getMonth().getDaysInMonth();
         int remainingDaysInCurrentMonth = daysInCurrentMonth - this.startDate.getDay();
-        System.out.println(remainingDaysInCurrentMonth);
-        System.out.println(day);
         day += weeks*2;
 
         while (day > remainingDaysInCurrentMonth){
+            if (year.isLeapYear()) {
+                day++;
+            }
+            if (month == Month.DECEMBER){
+                year.setYear(year.getYear() + 1);
+            }
             month = month.next(1);
             day -= remainingDaysInCurrentMonth;
             remainingDaysInCurrentMonth = month.getDaysInMonth();
+
         }
 
         CustomDate customDate = new CustomDate(year, month, day, workingDay, hour, minute);
@@ -52,7 +57,7 @@ public class DueDateCalculator {
 
     public static void main(String[] args) {
 
-        CustomDate startDate = new CustomDate(2018, 5, 7, WorkingDay.MONDAY, 12, 30);
+        CustomDate startDate = new CustomDate(2020, 12, 7, WorkingDay.MONDAY, 12, 30);
         System.out.println(startDate);
 
         DueDateCalculator dueDateCalculator = new DueDateCalculator();
