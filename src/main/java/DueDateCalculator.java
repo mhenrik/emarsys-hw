@@ -33,10 +33,16 @@ public class DueDateCalculator {
         Month month = this.startDate.getMonth();
         int endDay = this.startDate.getDay() + calendarDays;
         WorkingDay workingDay = this.startDate.getWorkingDay().next(days);
+        weeks += (this.startDate.getWorkingDay().ordinal() + days) / 5;
         Hour hour = this.startDate.getHour().next(hours);
         Minute minute = this.startDate.getMinute();
+        int daysInCurrentMonth;
 
-        int daysInCurrentMonth = startDate.getMonth().getDaysInMonth();
+        if (year.isLeapYear() && month == Month.FEBRUARY){
+            daysInCurrentMonth = startDate.getMonth().getDaysInMonth() + 1;
+        } else {
+            daysInCurrentMonth = startDate.getMonth().getDaysInMonth();
+        }
         endDay += weeks*2;
 
         while (endDay > daysInCurrentMonth){
@@ -76,13 +82,13 @@ public class DueDateCalculator {
 
         HourConverter hourConverter = new HourConverter();
 
-        CustomDate startDate = new CustomDate(2018, 5, 14, WorkingDay.MONDAY, 12, 30);
+        CustomDate startDate = new CustomDate(2020, 2, 27, WorkingDay.THURSDAY, 12, 30);
         System.out.println("The start date is: " + startDate);
 
         DueDateCalculator dueDateCalculator = new DueDateCalculator(hourConverter);
         dueDateCalculator.setStartDate(startDate);
 
-        dueDateCalculator.setTurnaroundTime(49);
+        dueDateCalculator.setTurnaroundTime(17);
 
         System.out.println("The due date is: " + dueDateCalculator.calculateDueDate());
 
